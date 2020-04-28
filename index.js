@@ -1,4 +1,4 @@
-//  create a function that merges two sorted arrays, and returns a new array sorted
+// 1.  create a function that merges two sorted arrays, and returns a new array sorted
 
 // GAMEPLAN
  // have a pointer to compare the first element of arr1 
@@ -8,6 +8,10 @@
 
   // pointer of arr1 to move up a element while still comparing to first element of arr2
   // only move pointer for each if element is removed
+
+
+
+//2.  Do a mergeSort for an unsorted array using the merge function created
 
 
 function merge(arr1, arr2) {
@@ -36,9 +40,35 @@ function merge(arr1, arr2) {
   }
  
   return returnArr
-
-
- 
 }
 
-merge([1,3,5], [2,4,6,8,10])
+
+function mergeSort(arr) {
+  // base case
+  if(arr.length <= 1) {
+    return arr
+  }
+  // Break array into half
+  let half = Math.floor(arr.length / 2)
+
+  // left half
+  let left = mergeSort(arr.slice(0, half))
+
+  // right half
+  let right = mergeSort(arr.slice(half))
+  
+  // merge and sort broken down array
+  return merge(left, right)
+}
+
+
+mergeSort([1,10,99,2,3,22,10,0])
+
+
+
+
+
+
+
+
+// merge([1,3,5], [2,4,6,8,10])
